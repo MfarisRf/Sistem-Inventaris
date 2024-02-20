@@ -39,7 +39,7 @@ function CreateBarangKeluar() {
 			value: customer.id
 		})))
 	}
-			
+	
 	useEffect(() => {
 		fetchCustomer();
 	}, []);
