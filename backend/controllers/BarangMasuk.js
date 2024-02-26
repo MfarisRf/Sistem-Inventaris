@@ -51,8 +51,8 @@ export const Tambah = async (req, res) =>{
     db.query(barang, [req.body.id_barang], (err, data) => {
         const id         = data[0].id;
         const harga      = parseInt(data[0].harga);
-        const stok       = parseInt(data[0].stok);
-        const stok_masuk = parseInt(req.body.stok_masuk);
+        const stok       = parseFloat(data[0].stok);
+        const stok_masuk = parseFloat(req.body.stok_masuk);
         const updatestok = stok + stok_masuk;
         const total      = harga * stok_masuk;
 
