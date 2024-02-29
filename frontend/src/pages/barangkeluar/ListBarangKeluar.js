@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import LayoutGudang from '../../layout/LayoutGudang'
 import axios from 'axios'
 import moment from 'moment'
+import Swal from 'sweetalert2'
 
 import 'jquery/dist/jquery.min.js';
 import "datatables.net-dt/js/dataTables.dataTables"
@@ -26,6 +27,33 @@ function ListBarangKeluar() {
         await axios.get('http://localhost:8081/barangkeluar')
 		.then(res => setData(res.data))
 		.catch(err => console.log(err));
+    }
+	const handleDeleteBarangKeluar = async (id) => {
+        const isConfirm = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            return result.isConfirmed
+          });
+
+          if(!isConfirm){
+            return;
+          }
+
+          axios.delete('http://localhost:8081/deletebarangkeluar/'+id)
+		  						.then(res => {
+		  							Swal.fire({
+		  								icon:"success",
+		  								title:"SUCCESS",
+		  								text:"Data Berhasil Dihapus"
+		  							})
+		  							fetchData()
+		  						}).catch(err => console.log(err));						
     }
 
   return (
@@ -90,11 +118,12 @@ function ListBarangKeluar() {
 													<td>{row.nama_customer}</td>
                                                     <td>{row.nama_barang}</td>
 													<td>{moment(row.tgl_keluar).format('DD/MMMM/YYYY')}</td>
-                                                    <td>{row.stok_keluar} Pcs</td>
+                                                    <td>{row.stok_keluar} Kg</td>
 													<td>Rp. {row.total.toLocaleString()}</td>
                                                     <td>
                                                         <Link to={`/detailBarangKeluar/${row.id}`} className='btn btn-xs btn-success'><i className='fa fa-list'></i></Link> &nbsp;
                                                         <Link to={`/cetakBarangKeluar/${row.id}`} target='_blank' className='btn btn-xs btn-secondary'><i className='fa fa-print'></i></Link>
+														<button onClick={()=>handleDeleteBarangKeluar(row.id)} className='btn btn-xs btn-danger'><i className='fa fa-trash'></i></button>
                                                     </td>
 												</tr>
 											))}

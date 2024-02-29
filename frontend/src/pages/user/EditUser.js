@@ -27,7 +27,7 @@ function EditUser() {
                 username: res.data[0].username,
                 role: res.data[0].role
             });
-        })
+        }) 
         .catch(err => console.log(err));
     }, [])
 

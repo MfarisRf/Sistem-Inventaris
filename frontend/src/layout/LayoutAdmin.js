@@ -121,6 +121,11 @@ function LayoutAdmin() {
                                                 <span class="sub-item">Data Supplier</span>
                                             </Link>
                                         </li>
+                                        <li>
+                                            <Link to="/Katalog">
+                                                <span class="sub-item">Data Catalog</span>
+                                            </Link>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

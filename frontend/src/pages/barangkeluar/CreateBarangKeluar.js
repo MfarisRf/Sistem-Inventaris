@@ -133,10 +133,10 @@ function CreateBarangKeluar() {
                                     <div class="form-group">
                                         <label>Stok Keluar</label>
 										<div class="input-group mb-3">
-											<input type="number" class="form-control" placeholder="Stok Keluar ..." name='stok_keluar' 
+											<input type="number" step={0.01} class="form-control" placeholder="Stok Keluar ..." name='stok_keluar' 
                                             onChange={e => setValues({...values, stok_keluar: e.target.value})} required />
                                             <div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">Pcs</span>
+												<span class="input-group-text" id="basic-addon1">Kg</span>
 											</div>
 										</div>
 									</div>

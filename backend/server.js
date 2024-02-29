@@ -12,6 +12,7 @@ import BarangRoute from "./routes/BarangRoute.js";
 import BarangMasukRoute from "./routes/BarangMasukRoute.js";
 import BarangKeluarRoute from "./routes/BarangKeluarRoute.js";
 import LaporanRoute from "./routes/LaporanRoute.js";
+import KatalogRoute from "./routes/KatalogRoute.js";
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use(BarangRoute);
 app.use(BarangMasukRoute);
 app.use(BarangKeluarRoute);
 app.use(LaporanRoute);
+app.use(KatalogRoute);
 
 app.listen(8081, ()=> {
     console.log("Running ...");

@@ -114,7 +114,7 @@ function ListBarang() {
 												<tr key={key}>
 													<td>{key + 1}</td>
 													<td>{row.nama_barang}</td>
-													<td>{row.stok} Pcs</td>
+													<td>{row.stok} Kg</td>
 													<td>Rp. {row.harga.toLocaleString()}</td>
 													<td>
 														<Link to={`/editBarang/${row.id}`} className='btn btn-xs btn-primary'><i className='fa fa-edit'></i> Edit</Link> &nbsp;

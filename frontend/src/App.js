@@ -35,6 +35,10 @@ import LaporanBarangKeluar from './pages/laporan/LaporanBarangKeluar'
 import CetakAllBarangMasuk from './pages/laporan/CetakAllBarangMasuk'
 import CetakAllBarangKeluar from './pages/laporan/CetakAllBarangKeluar'
 
+import ListCatalog from './pages/Katalog/ListCatalog';
+import CreateCatalog from './pages/Katalog/CreateCatalog';
+import EditCatalog from './pages/Katalog/EditCatalog';
+
 function App() {
   return (
     <BrowserRouter>
@@ -56,6 +60,11 @@ function App() {
             <Route path='/supplier' element={<ListSupplier />}></Route>
             <Route path='/createSupplier' element={<CreateSupplier />}></Route>
             <Route path='/editSupplier/:id' element={<EditSupplier />}></Route>
+
+            {/* Data Catalog */}
+            <Route path='/Katalog' element={<ListCatalog />}></Route>
+            <Route path='/createKatalog' element={<CreateCatalog />}></Route>
+            <Route path='/editSupplier/:id' element={<EditCatalog />}></Route>
 
             {/* Data Barang */}
             <Route path='/barang' element={<ListBarang />}></Route>

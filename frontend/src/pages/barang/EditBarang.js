@@ -106,7 +106,7 @@ function EditBarang() {
 											<input type="number" class="form-control" placeholder="Stok ..." name='stok' 
                                             value={values.stok} onChange={e => setValues({...values, stok: e.target.value})} required />
                                             <div class="input-group-prepend">
-												<span class="input-group-text" id="basic-addon1">Pcs</span>
+												<span class="input-group-text" id="basic-addon1">Kg</span>
 											</div>
 										</div>
 									</div>

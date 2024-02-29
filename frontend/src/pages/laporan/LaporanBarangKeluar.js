@@ -89,7 +89,7 @@ function LaporanBarangKeluar() {
 													<td>{row.nama_customer}</td>
                                                     <td>{row.nama_barang}</td>
 													<td>{moment(row.tgl_keluar).format('DD/MMMM/YYYY')}</td>
-                                                    <td>{row.stok_keluar} Pcs</td>
+                                                    <td>{row.stok_keluar} Kg</td>
 													<td>Rp. {row.total.toLocaleString()}</td>
 												</tr>
 											))}

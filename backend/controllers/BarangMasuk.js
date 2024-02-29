@@ -50,7 +50,7 @@ export const Tambah = async (req, res) =>{
     const barang = "SELECT * FROM tbl_barang WHERE id = ?";
     db.query(barang, [req.body.id_barang], (err, data) => {
         const id         = data[0].id;
-        const harga      = parseInt(data[0].harga);
+        const harga      = parseFloat(data[0].harga);
         const stok       = parseFloat(data[0].stok);
         const stok_masuk = parseFloat(req.body.stok_masuk);
         const updatestok = stok + stok_masuk;
@@ -69,6 +69,14 @@ export const Tambah = async (req, res) =>{
         const sql = "UPDATE tbl_barang SET `stok`=? WHERE id=?";
         db.query(sql, [updatestok, id])
 
+        return res.json({Status: "Success"});
+    })
+}
+export const HapusMasuk = async (req, res) =>{
+    const id = req.params.id;
+    const sql = "DELETE FROM tbl_barang_masuk WHERE id=?";
+    db.query(sql, [id], (err, result) => {
+        if(err) return res.json({Error: "Error inside server"});
         return res.json({Status: "Success"});
     })
 }

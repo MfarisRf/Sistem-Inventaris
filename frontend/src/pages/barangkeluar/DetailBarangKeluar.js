@@ -102,7 +102,7 @@ function DetailBarangKeluar() {
                                             <tr>
                                                 <td>{barangkeluar.nama_barang}</td>
                                                 <td>Rp. {parseInt(barangkeluar.harga).toLocaleString()}</td>
-                                                <td>{barangkeluar.stok_keluar} Pcs</td>
+                                                <td>{barangkeluar.stok_keluar} Kg</td>
                                                 <td>Rp. {parseInt(barangkeluar.total).toLocaleString()}</td>
                                             </tr>
                                         </table>

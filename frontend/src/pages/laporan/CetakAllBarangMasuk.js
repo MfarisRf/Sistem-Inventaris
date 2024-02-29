@@ -68,7 +68,7 @@ function CetakAllBarangMasuk() {
 						<td>{row.nama_supplier}</td>
                         <td>{row.nama_barang}</td>
 						<td>{moment(row.tgl_masuk).format('DD/MMMM/YYYY')}</td>
-                        <td>{row.stok_masuk} Pcs</td>
+                        <td>{row.stok_masuk} Kg</td>
 						<td>Rp. {row.total.toLocaleString()}</td>
 					</tr>
 					))}

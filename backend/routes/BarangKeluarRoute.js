@@ -6,7 +6,8 @@ import {
     TampilCustomer,
     Tambah,
     Detail,
-    Cetak
+    Cetak,
+    HapusKeluar
 } from "../controllers/BarangKeluar.js";
 import { verifyUser } from "../middleware/AuthUser.js";
 
@@ -20,5 +21,6 @@ router.get('/getcustomer',verifyUser, TampilCustomer);
 router.get('/detailbarangkeluar/:id',verifyUser, Detail);
 router.get('/cetakbarangkeluar/:id', Cetak);
 router.post('/tambahbarangkeluar',verifyUser, Tambah);
+router.delete('/deletebarangkeluar/:id',verifyUser, HapusKeluar);
 
 export default router;

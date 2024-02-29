@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import LayoutAdmin from '../../layout/LayoutAdmin'
 import axios from 'axios'
 import moment from 'moment'
-
+import Swal from 'sweetalert2'
 
 import 'jquery/dist/jquery.min.js';
 import "datatables.net-dt/js/dataTables.dataTables"
@@ -28,7 +28,33 @@ function LaporanBarangMasuk() {
 		.then(res => setData(res.data))
 		.catch(err => console.log(err));
     }
+	const handleDelete = async (id) => {
+        const isConfirm = await Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            return result.isConfirmed
+          });
 
+          if(!isConfirm){
+            return;
+          }
+
+          axios.delete('http://localhost:8081/deletelaporanmasuk/'+id)
+			.then(res => {
+				Swal.fire({
+					icon:"success",
+					title:"SUCCESS",
+					text:"Data Berhasil Dihapus"
+				})
+				fetchData()
+			}).catch(err => console.log(err));
+    }
   return (
     <div class="wrapper">
         <LayoutAdmin />
@@ -90,8 +116,11 @@ function LaporanBarangMasuk() {
 													<td>{row.nama_supplier}</td>
                                                     <td>{row.nama_barang}</td>
 													<td>{moment(row.tgl_masuk).format('DD/MMMM/YYYY')}</td>
-                                                    <td>{row.stok_masuk} Pcs</td>
+                                                    <td>{row.stok_masuk} Kg</td>
 													<td>Rp. {row.total.toLocaleString()}</td>
+													<td>
+														<button onClick={()=>handleDelete(row.id)} className='btn btn-xs btn-danger'><i className='fa fa-trash'></i> Hapus</button>
+													</td>
 												</tr>
 											))}
 											</tbody>

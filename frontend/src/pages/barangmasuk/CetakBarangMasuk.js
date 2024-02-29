@@ -92,9 +92,9 @@ function CetakBarangMasuk() {
                         </tr>
                         <tr>
                             <td>{barangmasuk.nama_barang}</td>
-                            <td>Rp. {parseInt(barangmasuk.harga).toLocaleString()}</td>
-                            <td>{barangmasuk.stok_masuk} Pcs</td>
-                            <td>Rp. {parseInt(barangmasuk.total).toLocaleString()}</td>
+                            <td>Rp. {parseFloat(barangmasuk.harga).toLocaleString()}</td>
+                            <td>{barangmasuk.stok_masuk} Kg</td>
+                            <td>Rp. {parseFloat(barangmasuk.total).toLocaleString()}</td>
                         </tr>
                     </table>
                 </div>

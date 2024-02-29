@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-import LayoutGudang from '../../layout/LayoutGudang'
+import LayoutAdmin from '../../layout/LayoutAdmin'
 import axios from 'axios'
-import moment from 'moment'
 import Swal from 'sweetalert2'
 
 import 'jquery/dist/jquery.min.js';
@@ -10,7 +9,7 @@ import "datatables.net-dt/js/dataTables.dataTables"
 import "datatables.net-dt/css/jquery.dataTables.min.css"
 import $ from 'jquery'; 
 
-function ListBarangMasuk() {
+function ListCatalog() {
 
 	const [data, setData] = useState([]);
 
@@ -24,11 +23,12 @@ function ListBarangMasuk() {
     },[])
 
     const fetchData = async () => {
-        await axios.get('http://localhost:8081/barangmasuk')
+        await axios.get('http://localhost:8081/katalog')
 		.then(res => setData(res.data))
 		.catch(err => console.log(err));
     }
-	const handleDeleteBarangMasuk = async (id) => {
+
+	const handleDelete = async (id) => {
         const isConfirm = await Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -45,25 +45,26 @@ function ListBarangMasuk() {
             return;
           }
 
-          axios.delete('http://localhost:8081/deletebarangmasuk/'+id)
-		  						.then(res => {
-		  							Swal.fire({
-		  								icon:"success",
-		  								title:"SUCCESS",
-		  								text:"Data Berhasil Dihapus"
-		  							})
-		  							fetchData()
-		  						}).catch(err => console.log(err));						
+          axios.delete('http://localhost:8081/deletekatalog/'+id)
+			.then(res => {
+				Swal.fire({
+					icon:"success",
+					title:"SUCCESS",
+					text:"Data Berhasil Dihapus"
+				})
+				fetchData()
+			}).catch(err => console.log(err));
     }
+
   return (
     <div class="wrapper">
-        <LayoutGudang />
+        <LayoutAdmin />
         
         <div class="main-panel">
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Data Barang Masuk</h4>
+						<h4 class="page-title">Data Katalog</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<Link href="#">
@@ -80,7 +81,7 @@ function ListBarangMasuk() {
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<Link href="#">Barang Masuk</Link>
+								<Link href="#">Barang</Link>
 							</li>
 						</ul>
 					</div>
@@ -89,8 +90,8 @@ function ListBarangMasuk() {
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title">Data Barang Masuk</h4>
-										<Link class="btn btn-primary btn-round ml-auto" to="/createBarangMasuk">
+										<h4 class="card-title">Data Katalog</h4>
+										<Link class="btn btn-primary btn-round ml-auto" to="/createKatalog">
 											<i class="fa fa-plus"></i> 
 											Tambah Data
 										</Link>
@@ -102,28 +103,23 @@ function ListBarangMasuk() {
 											<thead>
 												<tr>
 													<th>No</th>
-                                                    <th>Supplier</th>
-                                                    <th>Barang</th>
-													<th>Tgl Masuk</th>
-													<th>Stok Masuk</th>
-													<th>Total</th>
-                                                    <th>Action</th>
+													<th>Barang</th>
+													<th>Stok</th>
+													<th>Harga</th>
+													<th>Action</th>
 												</tr>
 											</thead>
 											<tbody>
 											{data.map((row, key)=>(
 												<tr key={key}>
 													<td>{key + 1}</td>
-													<td>{row.nama_supplier}</td>
-                                                    <td>{row.nama_barang}</td>
-													<td>{moment(row.tgl_masuk).format('DD/MMMM/YYYY')}</td>
-                                                    <td>{row.stok_masuk} Kg</td>
-													<td>Rp. {row.total.toLocaleString()}</td>
-                                                    <td>
-                                                        <Link to={`/detailBarangMasuk/${row.id}`} className='btn btn-xs btn-success'><i className='fa fa-list'></i></Link> &nbsp;
-                                                        <Link to={`/cetakBarangMasuk/${row.id}`} target='_blank' className='btn btn-xs btn-secondary'><i className='fa fa-print'></i></Link>
-														<button onClick={()=>handleDeleteBarangMasuk(row.id)} className='btn btn-xs btn-danger'><i className='fa fa-trash'></i></button>
-                                                    </td>
+													<td>{row.nama_barang}</td>
+													<td>{row.stok} Kg</td>
+													<td>Rp. {row.harga.toLocaleString()}</td>
+													<td>
+														<Link to={`/editBarang/${row.id}`} className='btn btn-xs btn-primary'><i className='fa fa-edit'></i> Edit</Link> &nbsp;
+														<button onClick={()=>handleDelete(row.id)} className='btn btn-xs btn-danger'><i className='fa fa-trash'></i> Hapus</button>
+													</td>
 												</tr>
 											))}
 											</tbody>
@@ -141,4 +137,4 @@ function ListBarangMasuk() {
   )
 }
 
-export default ListBarangMasuk
+export default ListCatalog

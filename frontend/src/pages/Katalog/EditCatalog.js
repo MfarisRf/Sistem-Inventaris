@@ -1,28 +1,45 @@
-import React, {useState} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
+import Swal from 'sweetalert2';
 import LayoutAdmin from '../../layout/LayoutAdmin'
-import axios from 'axios'
-import Swal from 'sweetalert2'
 
-function CreateBarang() {
+function EditCatalog() {
+	
+	const navigate = useNavigate();
 
-	const [values, setValues] = useState({
+    const {id} = useParams();
+    
+    const [values, setValues] = useState({
         nama_barang: '',
         harga: '',
         stok: '',
         deskripsi: ''
     })
 
-    const navigate = useNavigate();
+    useEffect(()=> {
+        axios.get('http://localhost:8081/editbarang/'+id)
+        .then(res => {
+            console.log(res)
+            setValues({
+                ...values, 
+                nama_barang: res.data[0].nama_barang, 
+                harga: res.data[0].harga,
+                stok: res.data[0].stok,
+                deskripsi: res.data[0].deskripsi
+            });
+        })
+        .catch(err => console.log(err));
+    }, [])
 
-    const handleSubmit = (event) => {
+    const handleUpdate = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8081/tambahbarang', values)
+        axios.put('http://localhost:8081/updatebarang/'+id, values)
         .then(res => {
             Swal.fire({
 				icon:"success",
 				title:"SUCCESS",
-				text:"Data Berhasil Disimpan"
+				text:"Data Berhasil Diubah"
 			})
             navigate('/barang')
         })
@@ -37,7 +54,7 @@ function CreateBarang() {
 			<div class="content">
 				<div class="page-inner">
 					<div class="page-header">
-						<h4 class="page-title">Create Data Barang</h4>
+						<h4 class="page-title">Edit Data Barang</h4>
 						<ul class="breadcrumbs">
 							<li class="nav-home">
 								<Link href="#">
@@ -48,7 +65,7 @@ function CreateBarang() {
 								<i class="flaticon-right-arrow"></i>
 							</li>
 							<li class="nav-item">
-								<Link href="#">Create Data</Link>
+								<Link href="#">Edit Data</Link>
 							</li>
 							<li class="separator">
 								<i class="flaticon-right-arrow"></i>
@@ -63,15 +80,15 @@ function CreateBarang() {
 							<div class="card">
 								<div class="card-header">
 									<div class="d-flex align-items-center">
-										<h4 class="card-title">Create Data Barang</h4>
+										<h4 class="card-title">Edit Data Barang</h4>
 									</div>
 								</div>
-								<form onSubmit={handleSubmit}>
+								<form onSubmit={handleUpdate}>
 								<div class="card-body">
-									<div className='form-group'>
+                                    <div className='form-group'>
 										<label>Nama Barang</label>
 										<input type='text' className='form-control' name='nama_barang' placeholder='Nama Barang ...' 
-										onChange={e => setValues({...values, nama_barang: e.target.value})} required />
+										value={values.nama_barang} onChange={e => setValues({...values, nama_barang: e.target.value})} required />
 									</div>
 									<div class="form-group">
                                         <label>Harga</label>
@@ -80,14 +97,14 @@ function CreateBarang() {
 												<span class="input-group-text" id="basic-addon1">Rp</span>
 											</div>
 											<input type="number" class="form-control" placeholder="Harga ..." name='harga' 
-                                            onChange={e => setValues({...values, harga: e.target.value})} required />
+                                            value={values.harga} onChange={e => setValues({...values, harga: e.target.value})} required />
 										</div>
 									</div>
                                     <div class="form-group">
                                         <label>Stok</label>
 										<div class="input-group mb-3">
 											<input type="number" class="form-control" placeholder="Stok ..." name='stok' 
-                                            onChange={e => setValues({...values, stok: e.target.value})} required />
+                                            value={values.stok} onChange={e => setValues({...values, stok: e.target.value})} required />
                                             <div class="input-group-prepend">
 												<span class="input-group-text" id="basic-addon1">Kg</span>
 											</div>
@@ -96,7 +113,7 @@ function CreateBarang() {
 									<div className='form-group'>
 										<label>Deskripsi</label>
 										<textarea className='form-control' rows='5' name='deskripsi' placeholder='Deskripsi ...' 
-                                        onChange={e => setValues({...values, deskripsi: e.target.value})} required ></textarea>
+                                        value={values.deskripsi} onChange={e => setValues({...values, deskripsi: e.target.value})} required ></textarea>
 									</div>
 								</div>
 								<div className='card-footer'>
@@ -115,4 +132,4 @@ function CreateBarang() {
   )
 }
 
-export default CreateBarang
+export default EditCatalog

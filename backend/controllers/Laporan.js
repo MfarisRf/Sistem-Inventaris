@@ -35,3 +35,11 @@ export const CetakBarangKeluar = async (req, res) =>{
         return res.json(result);
     })
 }
+
+export const CetakAllBarangMasuk = async (req, res) =>{
+    const sql = "SELECT TBM.*, TB.nama_barang, TS.nama_supplier FROM tbl_barang_masuk TBM JOIN tbl_barang TB ON TB.id=TBM.id_barang JOIN tbl_supplier TS ON TS.id=TBM.id_supplier";
+    db.query(sql, (err, result) => {
+        if(err) return res.json({Error: "Error inside server"});
+        return res.json(result);
+    })
+}
