@@ -36,7 +36,7 @@ function LayoutAdmin() {
                 title:"SUCCESS",
                 text:"Logout Berhasil"
             })
-            navigate('/');
+            navigate('/login');
         }).catch(err => console.log(err));
     }
 

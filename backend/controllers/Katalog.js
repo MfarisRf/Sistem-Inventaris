@@ -1,11 +1,11 @@
-import db from "../config/Database";
+import db from "../config/Database.js";
 
 export const Me = async (req, res) =>{
     return res.json({Status: "Success", name: req.name, role: req.role});
 }
 
 export const Tampil = async (req, res) =>{
-    const sql = "SELECT * FTOM tbl_catalog";
+    const sql = "SELECT * FROM tbl_catalog";
     db.query(sql, (err, result) => {
         if(err) return res.json({Error: "Error inside server"});
         return res.json(result);
