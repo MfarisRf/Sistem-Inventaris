@@ -39,17 +39,23 @@ import ListCatalog from './pages/Katalog/ListCatalog';
 import CreateCatalog from './pages/Katalog/CreateCatalog';
 import EditCatalog from './pages/Katalog/EditCatalog';
 
+import LP from './pages/Landingpage/LP';
+
 function App() {
   return (
     <BrowserRouter>
         <Routes>
+
+
+            <Route path='/' element={<LP/>}></Route>
+
             <Route path='/login' element={<Login />}></Route>
             <Route path='/home' element={<Home />}></Route>
             
             {/* Data User */}
             <Route path='/user' element={<ListUser />}></Route>
             <Route path='/createUser' element={<CreateUser />}></Route>
-            <Route path='/editUser/:id' element={<EditUser />}></Route>
+            <Route path='/editUser/:id' element={<EditUser />}></Route>  
 
             {/* Data Customer */}
             <Route path='/customer' element={<ListCustomer />}></Route>

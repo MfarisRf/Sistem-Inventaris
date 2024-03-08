@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mantine/core": "^7.6.1",
+    "@mantine/hooks": "^7.6.1",
+    "@material-tailwind/react": "^2.1.9",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "datatables.net-dt": "^1.13.4",
+    "flowbite": "^2.3.0",
+    "flowbite-react": "^0.7.2",
     "jquery": "^3.6.4",
     "moment": "^2.29.4",
     "npx": "^10.2.2",
@@ -19,9 +24,11 @@
     "react-scripts": "5.0.1",
     "react-to-print": "^2.14.12",
     "sweetalert2": "^11.7.5",
+    "vite": "^5.1.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "dev": "react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -46,6 +53,9 @@
     ]
   },
   "devDependencies": {
+    "postcss": "^8.4.35",
+    "postcss-preset-mantine": "^1.13.0",
+    "postcss-simple-vars": "^7.0.1",
     "tailwindcss": "^3.4.1"
   }
 }
