@@ -45,7 +45,6 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-
             <Route path='/' element={<LP/>}></Route>
 
             <Route path='/login' element={<Login />}></Route>
