@@ -26,7 +26,7 @@ function CetakAllBarangMasuk() {
         })
 		.catch(err => console.log(err));
     }
-
+  
   return (
     
     <div class="row" ref={componentRef}>

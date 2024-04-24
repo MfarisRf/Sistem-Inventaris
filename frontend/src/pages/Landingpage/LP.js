@@ -3,7 +3,6 @@ import Hero from '../../Component/Home/Hero'
 import Navbarlp from '../../Component/Navbar'
 
 
-
 const LP = () => {
   return (
     <>

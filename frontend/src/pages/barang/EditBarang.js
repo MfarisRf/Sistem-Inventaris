@@ -43,7 +43,7 @@ function EditBarang() {
 			})
             navigate('/barang')
         })
-        .catch(err => console.log(err);
+        .catch(err => console.log(err));
     }
 
   return (

@@ -34,26 +34,26 @@ import LaporanBarangMasuk from './pages/laporan/LaporanBarangMasuk'
 import LaporanBarangKeluar from './pages/laporan/LaporanBarangKeluar'
 import CetakAllBarangMasuk from './pages/laporan/CetakAllBarangMasuk'
 import CetakAllBarangKeluar from './pages/laporan/CetakAllBarangKeluar'
-
-import ListCatalog from './pages/Katalog/ListCatalog';
-import CreateCatalog from './pages/Katalog/CreateCatalog';
-import EditCatalog from './pages/Katalog/EditCatalog';
-
 import LP from './pages/Landingpage/LP';
+import Katalog from './pages/Katalog/ListCatalog';
 
 function App() {
   return (
     <BrowserRouter>
         <Routes>
-            <Route path='/' element={<LP/>}></Route>
-
-            <Route path='/login' element={<Login />}></Route>
+          {/* Landing Page */}
+            <Route path='/' element={<LP />}></Route>
             <Route path='/home' element={<Home />}></Route>
+
+            {/* Data Katalog */}
+            <Route path='/katalog' element={<Katalog />}></Route>
+            {/* Login */}
+            <Route path='/login' element={<Login />}></Route>
             
             {/* Data User */}
             <Route path='/user' element={<ListUser />}></Route>
             <Route path='/createUser' element={<CreateUser />}></Route>
-            <Route path='/editUser/:id' element={<EditUser />}></Route>  
+            <Route path='/editUser/:id' element={<EditUser />}></Route>
 
             {/* Data Customer */}
             <Route path='/customer' element={<ListCustomer />}></Route>
@@ -64,11 +64,6 @@ function App() {
             <Route path='/supplier' element={<ListSupplier />}></Route>
             <Route path='/createSupplier' element={<CreateSupplier />}></Route>
             <Route path='/editSupplier/:id' element={<EditSupplier />}></Route>
-
-            {/* Data Catalog */}
-            <Route path='/Katalog' element={<ListCatalog />}></Route>
-            <Route path='/createKatalog' element={<CreateCatalog />}></Route>
-            <Route path='/editSupplier/:id' element={<EditCatalog />}></Route>
 
             {/* Data Barang */}
             <Route path='/barang' element={<ListBarang />}></Route>

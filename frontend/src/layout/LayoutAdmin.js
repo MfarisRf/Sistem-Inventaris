@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import Profile from '../user.png'
+import Profile from '../user.png';
 
 function LayoutAdmin() {
     const [auth, setAuth] = useState(false);
@@ -13,152 +13,149 @@ function LayoutAdmin() {
     axios.defaults.withCredentials = true;
     const navigate = useNavigate();
 
-    useEffect(()=> {
+    useEffect(() => {
         axios.get('http://localhost:8081')
         .then(res => {
-          if(res.data.Status === "Success") {
-              setAuth(true)
-              setNama(res.data.nama_user)
-              setRole(res.data.role)
-          }else {
-            setAuth(false)
-            setMessage(res.data.Error)
-          }
+            if (res.data.Status === "Success") {
+                setAuth(true);
+                setNama(res.data.nama_user);
+                setRole(res.data.role);
+            } else {
+                setAuth(false);
+                setMessage(res.data.Error);
+            }
         })
-        .then(err => console.log(err));
-    }, [])
+        .catch(err => console.log(err));
+    }, []);
   
     const handleLogout = () => {
         axios.get('http://localhost:8081/logout')
         .then(res => {
             Swal.fire({
-                icon:"success",
-                title:"SUCCESS",
-                text:"Logout Berhasil"
-            })
+                icon: "success",
+                title: "SUCCESS",
+                text: "Logout Berhasil"
+            });
             navigate('/login');
-        }).catch(err => console.log(err));
-    }
-
+        })
+        .catch(err => console.log(err));
+    };
 
     return (
         <div>
-            <div class="main-header" data-background-color="purple">
-                <div class="logo-header">
-                    
-                    <Link href="#" class="logo">
-                        <font size="5" style={{color: "white"}} class="navbar-brand">INVENTORY</font>
+            <div className="main-header" data-background-color="purple">
+                <div className="logo-header">
+                    <Link to="#" className="logo">
+                        <font size="5" style={{ color: "white" }} className="navbar-brand">INVENTORY</font>
                     </Link>
-                    <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon">
-                            <i class="fa fa-bars"></i>
+                    <button className="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon">
+                            <i className="fa fa-bars"></i>
                         </span>
                     </button>
-                    <button class="topbar-toggler more"><i class="fa fa-ellipsis-v"></i></button>
-                    <div class="navbar-minimize">
-                        <button class="btn btn-minimize btn-rounded">
-                            <i class="fa fa-bars"></i>
+                    <button className="topbar-toggler more"><i className="fa fa-ellipsis-v"></i></button>
+                    <div className="navbar-minimize">
+                        <button className="btn btn-minimize btn-rounded">
+                            <i className="fa fa-bars"></i>
                         </button>
                     </div>
                 </div>
                 
-                <nav class="navbar navbar-header navbar-expand-lg">
-                    
+                <nav className="navbar navbar-header navbar-expand-lg">
                 </nav>
             </div>
 
-            <div class="sidebar">
-                
-                <div class="sidebar-wrapper scrollbar-inner">
-                    <div class="sidebar-content">
-                        <div class="user">
-                            <div class="avatar-sm float-left mr-2">
-                                <img src={Profile} alt="..." class="avatar-img rounded-circle" />
+            <div className="sidebar">
+                <div className="sidebar-wrapper scrollbar-inner">
+                    <div className="sidebar-content">
+                        <div className="user">
+                            <div className="avatar-sm float-left mr-2">
+                                <img src={Profile} alt="..." className="avatar-img rounded-circle" />
                             </div>
-                            <div class="info">
+                            <div className="info">
                                 <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                                     <span>
                                         {nama_user}
-                                        <span class="user-level">{role}</span>
+                                        <span className="user-level">{role}</span>
                                     </span>
                                 </a>
-                                <div class="clearfix"></div>
+                                <div className="clearfix"></div>
                             </div>
                         </div>
-                        <ul class="nav">
-                            <li class="nav-item">
+                        <ul className="nav">
+                            <li className="nav-item">
                                 <Link to="/home">
-                                    <i class="fas fa-home"></i>
+                                    <i className="fas fa-home"></i>
                                     <p>Dashboard</p>
                                 </Link>
                             </li>
-                            <li class="nav-section">
-                                <span class="sidebar-mini-icon">
-                                    <i class="fa fa-ellipsis-h"></i>
+                            <li className="nav-section">
+                                <span className="sidebar-mini-icon">
+                                    <i className="fa fa-ellipsis-h"></i>
                                 </span>
-                                <h4 class="text-section">Components</h4>
+                                <h4 className="text-section">Components</h4>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <a data-toggle="collapse" href="#base">
-                                    <i class="fas fa-layer-group"></i>
+                                    <i className="fas fa-layer-group"></i>
                                     <p>Data Master</p>
-                                    <span class="caret"></span>
+                                    <span className="caret"></span>
                                 </a>
-                                <div class="collapse" id="base">
-                                    <ul class="nav nav-collapse">
+                                <div className="collapse" id="base">
+                                    <ul className="nav nav-collapse">
                                         <li>
                                             <Link to="/user">
-                                                <span class="sub-item">Data User</span>
+                                                <span className="sub-item">Data User</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/customer">
-                                                <span class="sub-item">Data Customer</span>
+                                                <span className="sub-item">Data Customer</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/supplier">
-                                                <span class="sub-item">Data Supplier</span>
+                                                <span className="sub-item">Data Supplier</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/Katalog">
-                                                <span class="sub-item">Data Catalog</span>
+                                                <span className="sub-item">Data Catalog</span>
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link to="/barang">
-                                    <i class="fas fa-briefcase"></i>
+                                    <i className="fas fa-briefcase"></i>
                                     <p>Data Barang</p>
                                 </Link>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <a data-toggle="collapse" href="#laporan">
-                                    <i class="fas fa-file"></i>
+                                    <i className="fas fa-file"></i>
                                     <p>Data Laporan</p>
-                                    <span class="caret"></span>
+                                    <span className="caret"></span>
                                 </a>
-                                <div class="collapse" id="laporan">
-                                    <ul class="nav nav-collapse">
+                                <div className="collapse" id="laporan">
+                                    <ul className="nav nav-collapse">
                                         <li>
                                             <Link to="/laporanbarangmasuk">
-                                                <span class="sub-item">Laporan Barang Masuk</span>
+                                                <span className="sub-item">Laporan Barang Masuk</span>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/laporanbarangkeluar">
-                                                <span class="sub-item">Laporan Barang Keluar</span>
+                                                <span className="sub-item">Laporan Barang Keluar</span>
                                             </Link>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="nav-item">
+                            <li className="nav-item">
                                 <Link onClick={handleLogout}>
-                                    <i class="fas fa-lock"></i>
+                                    <i className="fas fa-lock"></i>
                                     <p>Logout</p>
                                 </Link>
                             </li>
@@ -167,7 +164,7 @@ function LayoutAdmin() {
                 </div>
             </div>
         </div>
-  )
+    );
 }
 
-export default LayoutAdmin
+export default LayoutAdmin;

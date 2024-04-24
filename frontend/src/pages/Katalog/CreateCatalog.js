@@ -10,7 +10,6 @@ function CreateCatalog() {
         nama_katalog: '',
 		image: '',
 		deskripsi: ''
-
     })
 
     const navigate = useNavigate();

@@ -99,7 +99,6 @@ function LaporanBarangKeluar() {
 								</div>
 							</div>
 						</div>
-
 					</div>
 				</div>
 			</div>
