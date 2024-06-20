@@ -25,9 +25,8 @@ export default function Navbarlp() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand>
+        <NavbarBrand style={{marginLeft: '-150px',marginRight: '100px', transform: 'scale(0.3)' }}>
           <AcmeLogo />
-          <p className="font-bold text-inherit">ACME</p>
         </NavbarBrand>
       </NavbarContent>
 

@@ -7,9 +7,9 @@ export const Me = async (req, res) =>{
 export const Tampil = async (req, res) =>{
     const sql = "SELECT * FROM tbl_customer";
     db.query(sql, (err, result) => {
-        if(err) return res.json({Error: "Error inside server"});
+        if(err) return res.json({ Error: "Error inside server" });
         return res.json(result);
-    })
+    });
 }
 
 export const Tambah = async (req, res) =>{
@@ -19,20 +19,20 @@ export const Tambah = async (req, res) =>{
         req.body.nohp_customer,
         req.body.email_customer,
         req.body.alamat_customer
-    ]
+    ];
     db.query(sql, [values], (err, result) => {
-        if(err) return res.json(err);
-        return res.json(result);
-    })
+        if(err) return res.json({ Error: err });
+        return res.json({ Message: "Customer added successfully", result });
+    });
 }
 
 export const Edit = async (req, res) =>{
     const sql = "SELECT * FROM tbl_customer WHERE id = ?";
     const id = req.params.id;
     db.query(sql,[id], (err, result)=> {
-        if(err) return res.json({Error: "Error inside server"});
+        if(err) return res.json({ Error: "Error inside server" });
         return res.json(result);
-    })
+    });
 }
 
 export const Update = async (req, res) =>{
@@ -40,16 +40,24 @@ export const Update = async (req, res) =>{
     const id = req.params.id;
     
     db.query(sql, [req.body.nama_customer, req.body.nohp_customer, req.body.email_customer, req.body.alamat_customer, id], (err, result) => {
-        if(err) return res.json({Message: "Error inside server"});
-        return res.json(result);
-    })
+        if(err) return res.json({ Error: "Error inside server" });
+        return res.json({ Message: "Customer updated successfully", result });
+    });
 }
 
 export const Delete = async (req, res) =>{
     const sql = "DELETE FROM tbl_customer WHERE id = ?";
     const id = req.params.id;
     db.query(sql, [id], (err, result) => {
-        if(err) return res.json({Error: "Error inside server"});
-        return res.json(result);
-    })
+        if(err) return res.json({ Error: "Error inside server" });
+        return res.json({ Message: "Customer deleted successfully", result });
+    });
 }
+
+export const TotalCustomer = async (req, res) => {
+    const sql = "SELECT COUNT(*) as totalCustomers FROM tbl_customer";
+    db.query(sql, (err, result) => {
+        if (err) return res.json({ Error: "Error inside server" });
+        return res.json(result[0]); // Mengembalikan totalCustomers langsung, karena hasil query berupa array dengan satu objek
+    });
+};

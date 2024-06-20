@@ -7,7 +7,8 @@ import {
     Tambah,
     Detail,
     Cetak,
-    HapusKeluar
+    HapusKeluar,
+    TotalBarangKeluarPerBulan
 } from "../controllers/BarangKeluar.js";
 import { verifyUser } from "../middleware/AuthUser.js";
 
@@ -22,5 +23,6 @@ router.get('/detailbarangkeluar/:id',verifyUser, Detail);
 router.get('/cetakbarangkeluar/:id', Cetak);
 router.post('/tambahbarangkeluar',verifyUser, Tambah);
 router.delete('/deletebarangkeluar/:id',verifyUser, HapusKeluar);
+router.get('/totalbarangkeluarperbulan', TotalBarangKeluarPerBulan);
 
 export default router;

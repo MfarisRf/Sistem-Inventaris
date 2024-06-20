@@ -86,3 +86,22 @@ export const HapusKeluar = async (req, res) =>{
         return res.json({Status: "Success"});
     })
 }
+
+export const TotalBarangKeluarPerBulan = async (req, res) => {
+    try {
+        const sql = "SELECT MONTH(tgl_keluar) AS bulan, YEAR(tgl_keluar) AS tahun, SUM(stok_keluar) AS total_barang_keluar FROM tbl_barang_keluar GROUP BY YEAR(tgl_keluar), MONTH(tgl_keluar)";
+        db.query(sql, (err, result) => {
+            if (err) {
+                console.error('Error:', err);
+                return res.status(500).json({ Error: "Error inside server" });
+            }
+            if (!result || result.length === 0) {
+                return res.status(404).json({ Error: "Data not found" });
+            }
+            return res.json(result);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        return res.status(500).json({ Error: "Internal Server Error" });
+    }
+}

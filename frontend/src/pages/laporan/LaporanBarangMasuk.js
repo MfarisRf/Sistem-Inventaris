@@ -118,9 +118,7 @@ function LaporanBarangMasuk() {
 													<td>{moment(row.tgl_masuk).format('DD/MMMM/YYYY')}</td>
                                                     <td>{row.stok_masuk} Kg</td>
 													<td>Rp. {row.total.toLocaleString()}</td>
-													<td>
-														<button onClick={()=>handleDelete(row.id)} className='btn btn-xs btn-danger'><i className='fa fa-trash'></i> Hapus</button>
-													</td>
+													
 												</tr>
 											))}
 											</tbody>

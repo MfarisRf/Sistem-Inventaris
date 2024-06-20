@@ -1,40 +1,32 @@
-import React from 'react'
-import Hero1 from "../Assets/Hero slide1.jpg"
-import Heromid from "../Assets/heroMide.png"
-import Heroleft from "../Assets/heroleft.png"
-import Heroright from "../Assets/heroright.png"
+import React from 'react';
+import Hero1 from "../Assets/Hero slide1.jpg";
+import Heromid from "../Assets/heroMide.png";
+import Heroleft from "../Assets/heroleft.png";
+import Heroright from "../Assets/heroright.png";
+import HeroChair from "../Assets/Parsons Chair -2.png";
+
 
 const Hero = () => {
-
-    
   return (
-<section>
-	<div class="bg-black text-white py-20">
-		<div class="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
-			<div class="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
-				<h1 class="text-3xl md:text-5xl p-2 text-yellow-300 tracking-loose">TechFest</h1>
-				<h2 class="text-3xl md:text-5xl leading-relaxed md:leading-snug mb-2">Space : The Timeless Infinity
-				</h2>
-				<p class="text-sm md:text-base text-gray-50 mb-4">Explore your favourite events and
-					register now to showcase your talent and win exciting prizes.</p>
-				<a href="#"
-					class="bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-black rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent">
-					Explore Now</a>
-			</div>
-			<div class="p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center">
-				<div class="h-49 flex flex-wrap content-center">
-					<div>
-						<img class="inline-block mt-28 hidden xl:block" src={Heroleft}/></div>
-						<div>
-							<img class="inline-block mt-24 md:mt-0 p-8 md:p-8"  src={Heromid}/></div>
-							<div>
-								<img class="inline-block mt-28 hidden lg:block" src={Heroright}/></div>
-							</div>
-						</div>
-					</div>
-				</div>
+    <section className="bg-white dark:bg-gray-900">
+    <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <div className="mr-auto place-self-center lg:col-span-7">
+            <h1 className="max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white">Transform Your Space with Us</h1>
+            <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Discover the perfect blend of style, comfort, and functionality with our comprehensive furniture solutions. </p>
+            <a href="#" className="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                Get started
+                <svg className="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </a>
+            <a href="#" className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
+                Speak to Sales
+            </a> 
+        </div>
+        <div className="hidden ml-20 lg:mt-10 lg:col-span-5 lg:flex scale-150">
+            <img src={HeroChair} alt="mockup" className=" h-auto" />
+        </div>                
+    </div>
 </section>
-  )
+  );
 }
 
-export default Hero
+export default Hero;

@@ -89,12 +89,6 @@ function LayoutAdmin() {
                                     <p>Dashboard</p>
                                 </Link>
                             </li>
-                            <li className="nav-section">
-                                <span className="sidebar-mini-icon">
-                                    <i className="fa fa-ellipsis-h"></i>
-                                </span>
-                                <h4 className="text-section">Components</h4>
-                            </li>
                             <li className="nav-item">
                                 <a data-toggle="collapse" href="#base">
                                     <i className="fas fa-layer-group"></i>

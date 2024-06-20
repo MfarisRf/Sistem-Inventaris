@@ -18,6 +18,7 @@ function DetailBarangKeluar() {
         .catch(err => console.log(err));
     }, [])
 
+
   return (
     <div class="wrapper">
         <LayoutGudang />

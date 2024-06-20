@@ -53,3 +53,11 @@ export const Delete = async (req, res) =>{
         return res.json(result);
     })
 }
+
+export const TotalSupplier = async (req, res) => {
+    const sql = `SELECT COUNT(*) as totalSuppliers FROM tbl_supplier`;
+    db.query(sql, (err, result) => {
+        if (err) return res.json({ Error: "Error inside server" });
+        return res.json(result);
+    });
+};

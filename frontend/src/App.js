@@ -17,6 +17,7 @@ import CreateSupplier from './pages/supplier/CreateSupplier'
 import EditSupplier from './pages/supplier/EditSupplier'
 
 import ListBarang from './pages/barang/ListBarang'
+import ListBarangOwner from './pages/barang/ListBarangOwner'
 import CreateBarang from './pages/barang/CreateBarang'
 import EditBarang from './pages/barang/EditBarang'
 
@@ -31,11 +32,17 @@ import DetailBarangKeluar from './pages/barangkeluar/DetailBarangKeluar'
 import CetakBarangKeluar from './pages/barangkeluar/CetakBarangKeluar'
 
 import LaporanBarangMasuk from './pages/laporan/LaporanBarangMasuk'
+import LaporanBarangMasukOwner from './pages/laporan/LaporanBarangMasukOwner'
 import LaporanBarangKeluar from './pages/laporan/LaporanBarangKeluar'
+import LaporanBarangKeluarOwner from './pages/laporan/LaporanBarangKeluarOwner'
 import CetakAllBarangMasuk from './pages/laporan/CetakAllBarangMasuk'
 import CetakAllBarangKeluar from './pages/laporan/CetakAllBarangKeluar'
 import LP from './pages/Landingpage/LP';
 import Katalog from './pages/Katalog/ListCatalog';
+import ListCustomerOwner from './pages/customer/ListCustomerOwner';
+import ListSupplierOwner from './pages/supplier/ListSupplierOwner';
+import CreateKatalog from './pages/Katalog/CreateCatalog';
+import EditKatalog from './pages/Katalog/EditCatalog';
 
 function App() {
   return (
@@ -47,6 +54,9 @@ function App() {
 
             {/* Data Katalog */}
             <Route path='/katalog' element={<Katalog />}></Route>
+            <Route path='/createKatalog' element={<CreateKatalog />}></Route>
+            <Route path='/editKatalog/:id' element={<EditKatalog />}></Route>
+
             {/* Login */}
             <Route path='/login' element={<Login />}></Route>
             
@@ -57,16 +67,19 @@ function App() {
 
             {/* Data Customer */}
             <Route path='/customer' element={<ListCustomer />}></Route>
+            <Route path='/customerowner' element={<ListCustomerOwner />}></Route>
             <Route path='/createCustomer' element={<CreateCustomer />}></Route>
             <Route path='/editCustomer/:id' element={<EditCustomer />}></Route>
 
             {/* Data Supplier */}
-            <Route path='/supplier' element={<ListSupplier />}></Route>
+            <Route path='/supplier' element={<ListSupplier />}></Route>\
+            <Route path='/supplierowner' element={<ListSupplierOwner />}></Route>
             <Route path='/createSupplier' element={<CreateSupplier />}></Route>
             <Route path='/editSupplier/:id' element={<EditSupplier />}></Route>
 
             {/* Data Barang */}
             <Route path='/barang' element={<ListBarang />}></Route>
+            <Route path='/barangowner' element={<ListBarangOwner />}></Route>
             <Route path='/createBarang' element={<CreateBarang />}></Route>
             <Route path='/editBarang/:id' element={<EditBarang />}></Route>
 
@@ -84,7 +97,9 @@ function App() {
 
             {/* Data Laporan */}
             <Route path='/laporanbarangmasuk' element={<LaporanBarangMasuk />}></Route>
+            <Route path='/laporanbarangmasukowner' element={<LaporanBarangMasukOwner />}></Route>
             <Route path='/laporanbarangkeluar' element={<LaporanBarangKeluar />}></Route>
+            <Route path='/laporanbarangkeluarowner' element={<LaporanBarangKeluarOwner />}></Route>
             <Route path='/cetakallbarangmasuk' element={<CetakAllBarangMasuk />}></Route>
             <Route path='/cetakallbarangkeluar' element={<CetakAllBarangKeluar />}></Route>
         </Routes>

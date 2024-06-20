@@ -5,7 +5,8 @@ import {
     Tambah,
     Edit,
     Update,
-    Delete
+    Delete,
+    TotalCustomer
 } from "../controllers/Customer.js";
 import { verifyUser } from "../middleware/AuthUser.js";
 
@@ -18,5 +19,6 @@ router.post('/tambahcustomer',verifyUser, Tambah);
 router.get('/editcustomer/:id',verifyUser, Edit);
 router.put('/updatecustomer/:id',verifyUser, Update);
 router.delete('/deletecustomer/:id',verifyUser, Delete);
+router.get('/customers/totalcustomer', TotalCustomer);
 
 export default router;
