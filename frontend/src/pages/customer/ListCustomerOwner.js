@@ -91,10 +91,7 @@ function ListCustomerOwner() {
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 										<h4 class="card-title">Data Customer</h4>
-										<Link class="btn btn-primary btn-round ml-auto" to="/createCustomer">
-											<i class="fa fa-plus"></i> 
-											Tambah Data
-										</Link>
+
 									</div>
 								</div>
 								<div class="card-body">

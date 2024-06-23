@@ -43,6 +43,7 @@ import ListCustomerOwner from './pages/customer/ListCustomerOwner';
 import ListSupplierOwner from './pages/supplier/ListSupplierOwner';
 import CreateKatalog from './pages/Katalog/CreateCatalog';
 import EditKatalog from './pages/Katalog/EditCatalog';
+import ListCatalogOwner from './pages/Katalog/ListCatalogOwner';
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
 
             {/* Data Katalog */}
             <Route path='/katalog' element={<Katalog />}></Route>
+            <Route path='/katalogowner' element={<ListCatalogOwner />}></Route>
             <Route path='/createKatalog' element={<CreateKatalog />}></Route>
             <Route path='/editKatalog/:id' element={<EditKatalog />}></Route>
 

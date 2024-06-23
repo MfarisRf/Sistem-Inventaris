@@ -108,7 +108,7 @@ function LayoutOwner() {
                                             </Link>
                                         </li>
                                         <li>
-                                            <Link to="/Katalog">
+                                            <Link to="/Katalogowner">
                                                 <span className="sub-item">Data Catalog</span>
                                             </Link>
                                         </li>

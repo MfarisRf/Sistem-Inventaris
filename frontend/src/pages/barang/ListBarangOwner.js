@@ -89,10 +89,6 @@ function ListBarangOwner() {
 								<div class="card-header">
 									<div class="d-flex align-items-center">
 										<h4 class="card-title">Data Barang</h4>
-										<Link class="btn btn-primary btn-round ml-auto" to="/createBarang">
-											<i class="fa fa-plus"></i> 
-											Tambah Data
-										</Link>
 									</div>
 								</div>
 								<div class="card-body">
