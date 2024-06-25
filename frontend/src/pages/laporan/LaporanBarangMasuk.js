@@ -18,7 +18,9 @@ function LaporanBarangMasuk() {
         fetchData() 
 		$(document).ready(function () {
 			setTimeout(function(){
-			$('#example').DataTable();
+			$('#example').DataTable({
+                "searching": true // Menambahkan fitur searching
+            });
 			 } ,1000);
 		});
     },[])
