@@ -106,6 +106,7 @@ function ListCustomer() {
 													<th>Customer</th>
 													<th>No Handphone</th>
 													<th>Email</th>
+													<th>Alamat</th>
 													<th>Action</th>
 												</tr>
 											</thead>
@@ -116,6 +117,7 @@ function ListCustomer() {
 													<td>{row.nama_customer}</td>
 													<td>{row.nohp_customer}</td>
 													<td>{row.email_customer}</td>
+													<td>{row.alamat_customer}</td>
 													<td>
 														<Link to={`/editCustomer/${row.id}`} className='btn btn-xs btn-primary'><i className='fa fa-edit'></i> Edit</Link> &nbsp;
 														<button onClick={()=>handleDelete(row.id)} className='btn btn-xs btn-danger'><i className='fa fa-trash'></i> Hapus</button>

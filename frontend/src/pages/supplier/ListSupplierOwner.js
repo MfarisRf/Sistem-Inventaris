@@ -102,6 +102,7 @@ function ListSupplierOwner() {
 													<th>Supplier</th>
 													<th>No Handphone</th>
 													<th>Email</th>
+													<th>Alamat</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -111,6 +112,7 @@ function ListSupplierOwner() {
 													<td>{row.nama_supplier}</td>
 													<td>{row.nohp_supplier}</td>
 													<td>{row.email_supplier}</td>
+													<td>{row.alamat_supplier}</td>
 												</tr>
 											))}
 											</tbody>

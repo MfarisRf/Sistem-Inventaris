@@ -31,22 +31,22 @@ function ListCatalog() {
     }, []);
 
     const fetchData = async () => {
-        await axios.get('http://localhost:8081/katalog')
-            .then(res => {
-                if (Array.isArray(res.data)) {
-                    setData(res.data);
-                } else {
-                    console.error('Data fetched is not an array:', res.data);
-                    setData([]);
-                }
-            })
-            .catch(err => {
-                console.error('Error fetching data:', err);
+        try {
+            const res = await axios.get('http://localhost:8081/katalog');
+            if (Array.isArray(res.data)) {
+                setData(res.data);
+            } else {
+                console.error('Data fetched is not an array:', res.data);
                 setData([]);
-            });
+            }
+        } catch (err) {
+            console.error('Error fetching data:', err);
+            setData([]);
+        }
     };
 
     const handleDelete = async (id) => {
+        console.log('Deleting item with ID:', id); // Tambahkan logging ID
         const isConfirm = await Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -63,15 +63,21 @@ function ListCatalog() {
             return;
         }
 
-        axios.delete('http://localhost:8081/deletekatalog/' + id)
-            .then(res => {
+        try {
+            const res = await axios.delete(`http://localhost:8081/deletekatalog/${id}`);
+            if (res.status === 200) {
                 Swal.fire({
                     icon: "success",
                     title: "SUCCESS",
                     text: "Data Berhasil Dihapus"
                 });
                 fetchData();
-            }).catch(err => console.log(err));
+            } else {
+                console.error('Error deleting data:', res);
+            }
+        } catch (err) {
+            console.error('Error deleting data:', err);
+        }
     };
 
     const openModal = (image, width, height) => {

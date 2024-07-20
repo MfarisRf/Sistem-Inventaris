@@ -106,6 +106,7 @@ function ListSupplier() {
 													<th>Supplier</th>
 													<th>No Handphone</th>
 													<th>Email</th>
+													<th>Alamat</th>
 													<th>Action</th>
 												</tr>
 											</thead>
@@ -116,6 +117,7 @@ function ListSupplier() {
 													<td>{row.nama_supplier}</td>
 													<td>{row.nohp_supplier}</td>
 													<td>{row.email_supplier}</td>
+													<td>{row.alamat_supplier}</td>
 													<td>
 														<Link to={`/editSupplier/${row.id}`} className='btn btn-xs btn-primary'><i className='fa fa-edit'></i> Edit</Link> &nbsp;
 														<button onClick={()=>handleDelete(row.id)} className='btn btn-xs btn-danger'><i className='fa fa-trash'></i> Hapus</button>

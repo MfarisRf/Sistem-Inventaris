@@ -16,6 +16,8 @@ function Home() {
     const [role, setRole] = useState('');
     const [totalSuppliers, setTotalSuppliers] = useState(null);
     const [totalCustomers, setTotalCustomers] = useState(null);
+    const [totalKatalog, setTotalKatalog] = useState(null);
+    const [totalBarang, setTotalBarang] = useState(null);
     const [chartDataBarangMasuk, setChartDataBarangMasuk] = useState(null);
     const [chartDataBarangKeluar, setChartDataBarangKeluar] = useState(null);
 
@@ -37,9 +39,18 @@ function Home() {
             try {
                 const suppliersResponse = await axios.get('http://localhost:8081/suppliers/totalsupplier');
                 const customersResponse = await axios.get('http://localhost:8081/customers/totalcustomer');
+                const katalogResponse = await axios.get('http://localhost:8081/totalKatalog');
+                const barangResponse = await axios.get('http://localhost:8081/totalBarang');
+
+                console.log('Suppliers response:', suppliersResponse.data);
+                console.log('Customers response:', customersResponse.data);
+                console.log('Katalog response:', katalogResponse.data);
+                console.log('Barang response:', barangResponse.data);
 
                 const suppliersData = suppliersResponse.data;
                 const customersData = customersResponse.data;
+                const katalogData = katalogResponse.data;
+                const barangData = barangResponse.data;
 
                 if (suppliersData && Array.isArray(suppliersData) && suppliersData.length > 0) {
                     setTotalSuppliers(suppliersData[0].totalSuppliers);
@@ -51,6 +62,22 @@ function Home() {
                     setTotalCustomers(customersData.totalCustomers);
                 } else {
                     console.error('Customers data format is incorrect:', customersData);
+                }
+
+                if (Array.isArray(katalogData) && katalogData.length > 0) {
+                    setTotalKatalog(katalogData[0].totalKatalog);
+                } else if (katalogData.totalKatalog !== undefined) {
+                    setTotalKatalog(katalogData.totalKatalog);
+                } else {
+                    console.error('Katalog data format is incorrect:', katalogData);
+                }
+
+                if (Array.isArray(barangData) && barangData.length > 0) {
+                    setTotalBarang(barangData[0].totalBarang);
+                } else if (barangData.totalBarang !== undefined) {
+                    setTotalBarang(barangData.totalBarang);
+                } else {
+                    console.error('Barang data format is incorrect:', barangData);
                 }
 
                 // Fetch data barang masuk per bulan
@@ -139,31 +166,61 @@ function Home() {
                         </div>
                         <div className="row">
                             <div className="col-md">
-                                <div className="card">
-                                    <div className="card-body">
-                                        <center>
-                                            <h2 className="text-3xl font-bold mb-4">SISTEM INVENTORY CV Satori Rattan</h2>
-                                            <h3 className="text-xl font-semibold mb-8">SELAMAT DATANG {nama_user}</h3>
-                                            {totalSuppliers !== null ? (
-                                                <div className="total-suppliers bg-gray-100 p-6 rounded-lg shadow-md mb-4">
-                                                    <h4 className="text-lg font-semibold mb-2">Total Suppliers:</h4>
-                                                    <h2 className="text-3xl font-bold">{totalSuppliers}</h2>
-                                                </div>
-                                            ) : (
-                                                <p>Loading suppliers...</p>
-                                            )}
+                                
+                                    <div className="card">
+                                        <div className="card-body">
+                                            <center>
+                                                <h2 className="text-3xl font-bold mb-4">SISTEM INVENTORY CV Satori Rattan</h2>
+                                                <h3 className="text-xl font-semibold mb-8">SELAMAT DATANG {nama_user}</h3>
+                                                <div className="summary-container">
+                                                <Link to="/supplierowner"> 
+                                                    {totalSuppliers !== null ? (
+                                                        <div className="summary-box">
+                                                            <h4 className="summary-title">Total Suppliers:</h4>
+                                                            <h2 className="summary-value">{totalSuppliers}</h2>
+                                                        </div>
+                                                    ) : (
+                                                        <p>Loading suppliers...</p>
+                                                    )}
+                                                    </Link>
 
-                                            {totalCustomers !== null ? (
-                                                <div className="total-customers bg-gray-100 p-6 rounded-lg shadow-md">
-                                                    <h4 className="text-lg font-semibold mb-2">Total Customers:</h4>
-                                                    <h2 className="text-3xl font-bold">{totalCustomers}</h2>
+                                                    <Link to="/customerowner"> 
+                                                    {totalCustomers !== null ? (
+                                                        <div className="summary-box">
+                                                            <h4 className="summary-title">Total Customers:</h4>
+                                                            <h2 className="summary-value">{totalCustomers}</h2>
+                                                        </div>
+                                                    ) : (
+                                                        <p>Loading customers...</p>
+                                                    )}
+                                                    </Link>
+
+                                                    <Link to="/katalogowner"> 
+                                                    {totalKatalog !== null ? (
+                                                        <div className="summary-box">
+                                                            <h4 className="summary-title">Total Katalog:</h4>
+                                                            <h2 className="summary-value">{totalKatalog}</h2>
+                                                        </div>
+                                                    ) : (
+                                                        <p>Loading katalog...</p>
+                                                    )}
+                                                    </Link>
+
+                                                    <Link to="/barangowner"> 
+                                                    {totalBarang !== null ? (
+                                                        <div className="summary-box">
+                                                            <h4 className="summary-title">Total Barang:</h4>
+                                                            <h2 className="summary-value">{totalBarang}</h2>
+                                                        </div>
+                                                    ) : (
+                                                        <p>Loading barang...</p>
+                                                    )}
+                                                    </Link>
                                                 </div>
-                                            ) : (
-                                                <p>Loading customers...</p>
-                                            )}
-                                        </center>
+                                            </center>
+                                        </div>
                                     </div>
-                                </div>
+                                
                             </div>
                             
                             <div className="col-md-12">
@@ -239,6 +296,32 @@ function Home() {
                     </div>
                 </div>
             </div>
+            <style jsx>{`
+                .summary-container {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    gap: 20px;
+                    margin-top: 20px;
+                }
+
+                .summary-box {
+                    background-color: #f3f3f3;
+                    padding: 20px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                }
+
+                .summary-title {
+                    font-size: 1.2rem;
+                    margin-bottom: 10px;
+                }
+
+                .summary-value {
+                    font-size: 2rem;
+                    font-weight: bold;
+                }
+            `}</style>
         </div>
     );
 }

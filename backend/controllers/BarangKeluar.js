@@ -105,3 +105,18 @@ export const TotalBarangKeluarPerBulan = async (req, res) => {
         return res.status(500).json({ Error: "Internal Server Error" });
     }
 }
+
+export const getBarangById = async (req, res) => {
+    const { id } = req.params; // Ambil ID barang dari parameter request
+    const sql = "SELECT id, nama_barang, stok FROM tbl_barang WHERE id = ?";
+    db.query(sql, [id], (err, result) => {
+        if (err) {
+            console.error("Error executing query:", err);
+            return res.status(500).json({ Error: "Internal server error" });
+        }
+        if (result.length === 0) {
+            return res.status(404).json({ Error: "Barang not found" });
+        }
+        return res.json(result[0]); // Mengembalikan data barang pertama yang ditemukan
+    });
+};

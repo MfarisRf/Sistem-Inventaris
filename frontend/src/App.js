@@ -44,6 +44,8 @@ import ListSupplierOwner from './pages/supplier/ListSupplierOwner';
 import CreateKatalog from './pages/Katalog/CreateCatalog';
 import EditKatalog from './pages/Katalog/EditCatalog';
 import ListCatalogOwner from './pages/Katalog/ListCatalogOwner';
+import CetakLaporanBulanan from './pages/laporan/CetakLaporanBulanan';
+import CetakLaporanKeluar from './pages/laporan/CetakLaporanKeluar';
 
 function App() {
   return (
@@ -90,6 +92,7 @@ function App() {
             <Route path='/createBarangMasuk' element={<CreateBarangMasuk />}></Route>
             <Route path='/detailBarangMasuk/:id' element={<DetailBarangMasuk />}></Route>
             <Route path='/cetakBarangMasuk/:id' element={<CetakBarangMasuk />}></Route>
+            <Route path='/cetaklaporanbulanan' element={<CetakLaporanBulanan />}></Route>
 
             {/* Data Barang Keluar */}
             <Route path='/barangkeluar' element={<ListBarangKeluar />}></Route>
@@ -104,6 +107,7 @@ function App() {
             <Route path='/laporanbarangkeluarowner' element={<LaporanBarangKeluarOwner />}></Route>
             <Route path='/cetakallbarangmasuk' element={<CetakAllBarangMasuk />}></Route>
             <Route path='/cetakallbarangkeluar' element={<CetakAllBarangKeluar />}></Route>
+            <Route path='/cetaklaporankeluar' element={<CetakLaporanKeluar />}></Route>
         </Routes>
     </BrowserRouter>
   )

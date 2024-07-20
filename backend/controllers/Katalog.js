@@ -113,3 +113,11 @@ export const Tampil = async (req, res) =>{
         return res.status(500).json({ Error: "Error retrieving katalog" });
     }
 }
+
+export const TotalKatalog = async (req, res) => {
+    const sql = `SELECT COUNT(*) as totalKatalog FROM tbl_catalog`;
+    db.query(sql, (err, result) => {
+        if (err) return res.json({ Error: "Error inside server" });
+        return res.json(result);
+    });
+};

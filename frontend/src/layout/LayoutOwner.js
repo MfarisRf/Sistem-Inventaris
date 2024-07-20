@@ -90,57 +90,40 @@ function LayoutOwner() {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a data-toggle="collapse" href="#base">
-                                    <i className="fas fa-layer-group"></i>
-                                    <p>Data Master</p>
-                                    <span className="caret"></span>
-                                </a>
-                                <div className="collapse" id="base">
-                                    <ul className="nav nav-collapse">
-                                        <li>
-                                            <Link to="/customerowner">
-                                                <span className="sub-item">Data Customer</span>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/supplierowner">
-                                                <span className="sub-item">Data Supplier</span>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/Katalogowner">
-                                                <span className="sub-item">Data Catalog</span>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <Link to="/customerowner">
+                                    <i className="fas fa-users"></i>
+                                    <p>Data Customer</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/supplierowner">
+                                    <i className="fas fa-users"></i>
+                                    <p>Data Supplier</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/Katalogowner">
+                                    <i className="fas fa-box"></i>
+                                    <p>Data Katalog</p>
+                                </Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/barangowner">
-                                    <i className="fas fa-briefcase"></i>
+                                    <i className="fas fa-cube"></i>
                                     <p>Data Barang</p>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a data-toggle="collapse" href="#laporan">
-                                    <i className="fas fa-file"></i>
-                                    <p>Data Laporan</p>
-                                    <span className="caret"></span>
-                                </a>
-                                <div className="collapse" id="laporan">
-                                    <ul className="nav nav-collapse">
-                                        <li>
-                                            <Link to="/laporanbarangmasukowner">
-                                                <span className="sub-item">Laporan Barang Masuk</span>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/laporanbarangkeluarowner">
-                                                <span className="sub-item">Laporan Barang Keluar</span>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <Link to="/laporanbarangmasukowner">
+                                    <i className="fas fa-archive"></i>
+                                    <p>Data Barang Masuk</p>
+                                </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link to="/laporanbarangkeluarowner">
+                                    <i className="fas fa-archive"></i>
+                                    <p>Data Barang Keluar</p>
+                                </Link>
                             </li>
                             <li className="nav-item">
                                 <Link onClick={handleLogout}>

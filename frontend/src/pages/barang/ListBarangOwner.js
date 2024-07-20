@@ -99,7 +99,8 @@ function ListBarangOwner() {
 													<th>No</th>
 													<th>Barang</th>
 													<th>Stok</th>
-													<th>Harga</th>
+													<th>Harga per Kg</th>
+													<th>Deskripsi</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -109,6 +110,7 @@ function ListBarangOwner() {
 													<td>{row.nama_barang}</td>
 													<td>{row.stok} Kg</td>
 													<td>Rp. {row.harga.toLocaleString()}</td>
+													<td>{row.deskripsi}</td>
 												</tr>
 											))}
 											</tbody>

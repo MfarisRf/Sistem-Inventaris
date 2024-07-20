@@ -103,6 +103,7 @@ function ListCustomerOwner() {
 													<th>Customer</th>
 													<th>No Handphone</th>
 													<th>Email</th>
+													<th>Alamat</th>
 												</tr>
 											</thead>
 											<tbody>
@@ -112,6 +113,7 @@ function ListCustomerOwner() {
 													<td>{row.nama_customer}</td>
 													<td>{row.nohp_customer}</td>
 													<td>{row.email_customer}</td>
+													<td>{row.alamat_customer}</td>
 												</tr>
 											))}
 											</tbody>
