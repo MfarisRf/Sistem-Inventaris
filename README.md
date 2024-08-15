@@ -79,10 +79,6 @@ Sistem Inventaris adalah aplikasi berbasis web yang dirancang untuk mengelola da
 3. Akses fitur-fitur yang tersedia seperti manajemen barang masuk, barang keluar, produk, pelanggan, dan pemasok.
 4. Gunakan fitur laporan untuk melihat dan mencetak data inventaris.
 
-## Kontribusi
-
-Jika Anda ingin berkontribusi, silakan fork repositori ini dan buat pull request. Pastikan untuk menulis deskripsi yang jelas tentang perubahan yang Anda buat.
-
 ## Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
