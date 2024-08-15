@@ -29,7 +29,7 @@ Sistem Inventaris adalah aplikasi berbasis web yang dirancang untuk mengelola da
 
 1. Clone repositori ini ke dalam komputer Anda:
     ```bash
-    git clone https://github.com/username/sistem-inventaris.git
+    git clone https://github.com/MfarisRf/sistem-inventaris.git
     ```
 
 2. Masuk ke direktori proyek:
