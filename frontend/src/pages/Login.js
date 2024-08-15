@@ -54,6 +54,9 @@ function Login() {
                     <div class="form-action mb-3">
                         <button type='submit' class="btn btn-primary btn-rounded btn-login">Sign In</button>
                     </div>
+                    <div class="text-center mt-3">
+    <a href="/forgot-password" class="btn btn-link">Forgot Password?</a>
+</div>
                 </div>
                 </form>
             </div>

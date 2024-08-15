@@ -47,6 +47,9 @@ import ListCatalogOwner from './pages/Katalog/ListCatalogOwner';
 import CetakLaporanBulanan from './pages/laporan/CetakLaporanBulanan';
 import CetakLaporanKeluar from './pages/laporan/CetakLaporanKeluar';
 
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+
 function App() {
   return (
     <BrowserRouter>
@@ -54,6 +57,8 @@ function App() {
           {/* Landing Page */}
             <Route path='/' element={<LP />}></Route>
             <Route path='/home' element={<Home />}></Route>
+            <Route path='/forgot-password' element={<ForgotPassword />}></Route>
+            <Route path='/reset-password' element={<ResetPassword />}></Route>
 
             {/* Data Katalog */}
             <Route path='/katalog' element={<Katalog />}></Route>

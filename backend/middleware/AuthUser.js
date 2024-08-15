@@ -1,9 +1,9 @@
-import jwt, { verify } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 export const verifyUser = (req, res, next) => {
     const token = req.cookies.token;
     if(!token) {
-        return res.json({Error: "You are mot authenticated"});
+        return res.json({Error: "You are not authenticated"});
     }else {
         jwt.verify(token, "jwt-secret-key", (err, decoded) => {
             if(err) {
