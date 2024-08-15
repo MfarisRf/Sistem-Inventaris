@@ -13,6 +13,10 @@ Sistem Inventaris adalah aplikasi berbasis web yang dirancang untuk mengelola da
 - **Lupa Kata Sandi**: Mengirim tautan reset kata sandi melalui email.
 - **Laporan dan Cetak**: Menyediakan laporan barang masuk dan keluar yang dapat dicetak.
 
+## User
+- **Owner**: Memiliki peran untuk memonitoring dan melihat semua data yang ada di perusahaan.
+- **Admin**: Memiliki hak penuh untuk melakukan perubahan dan manajement data pada sistem.
+- **Admin Gudang**: Memiliki peran untuk melakukan pencatatan barang masuk dan barang keluar.
 ## Teknologi yang Digunakan
 
 - **Frontend**: React.js, Axios, SweetAlert2, DataTables, Tailwind CSS
@@ -70,7 +74,7 @@ Sistem Inventaris adalah aplikasi berbasis web yang dirancang untuk mengelola da
 
 ## Penggunaan
 
-1. Buka browser dan akses aplikasi melalui `http://localhost:3000`.
+1. Buka browser dan akses aplikasi melalui `http://localhost:3000/login`.
 2. Login menggunakan akun yang telah terdaftar.
 3. Akses fitur-fitur yang tersedia seperti manajemen barang masuk, barang keluar, produk, pelanggan, dan pemasok.
 4. Gunakan fitur laporan untuk melihat dan mencetak data inventaris.
